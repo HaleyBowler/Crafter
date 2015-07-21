@@ -20,9 +20,16 @@
 			$img = $pin->images;
 			$array = json_decode(json_encode($img), true);
 			$imgURL = $array["237x"]["url"];
-			$image = file_get_contents($imgURL);
-			file_put_contents('/assets/file.jpg', $image); //Where to save the image on your server
+			?>
+			<img src="<?php echo $imgURL?>">
+			<?php
 		}
+		?>
+
+		<?php
+		//$img = 'assets/file.jpg';
+		//file_put_contents($img, file_get_contents($url));
+		//echo '<img src="assets/file.jpg">';
 		?>
 	</div>
 </body>
