@@ -16,7 +16,7 @@
 		$json = file_get_contents($jsonurl);
 		$jfo = json_decode($json);
 		$pins = $jfo->data->pins;
-		$pin = $pins{0};
+		$pin = $pins{1};
 		$img = $pin->images;
 		$description = $pin->description;
 		$project = $pin->link;
@@ -28,7 +28,7 @@
 				<input type="hidden" id="description" name="description" value="<?php echo $description?>" />
 				<input type="hidden" id="project_url" name="project_url" value="<?php echo $project?>" />
 				<input type="hidden" id="picture_url" name="picture_url" value="<?php echo $imgURL?>" />
-				<input type="hidden" id="user_id" name="user_id" value="1" />
+				<input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id?>" />
 			</div>
 			<button type="submit">Like</button>
 		</form>

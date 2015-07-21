@@ -10,7 +10,12 @@ class User extends CI_Controller {
 	{
 		if(($this->session->userdata('user_id')!=""))
 		{
-			$this->load->view('home.php');
+			$user_info = $this->session->all_userdata();
+			$user_id = $user_info['user_id'];
+			$data = array(
+               	'user_id' => $user_id
+        	);
+			$this->load->view('home.php', $data);
 		}
 		else
 		{
@@ -22,7 +27,12 @@ class User extends CI_Controller {
     	$this->load->model('user_model');
     	$this->user_model->insert_into_db();
 
-		$this->load->view('home.php');
+    	$user_info = $this->session->all_userdata();
+		$user_id = $user_info['user_id'];
+		$data = array(
+            'user_id' => $user_id
+        );
+		$this->load->view('home.php', $data);
 	}
 	public function login()
 	{
@@ -38,7 +48,12 @@ class User extends CI_Controller {
 			$auth=$this->user_model->login($this->input->post('l_email'),$this->input->post('l_pass'));
 			if($auth)
 			{
-				$this->load->view('home.php');
+				$user_info = $this->session->all_userdata();
+				$user_id = $user_info['user_id'];
+				$data = array(
+               		'user_id' => $user_id
+        		);
+				$this->load->view('home.php', $data);
 			}
 			else
 			{
