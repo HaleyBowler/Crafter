@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['crafter/index.php/migrate'] = 'migrate';
 $route['crafter/index.php/home'] = 'home';
+$route['crafter/index.php/likes'] = 'like';
