@@ -14,6 +14,14 @@ class User_model extends CI_Model {
     $this->db->insert('users',$data);
     return true;
   }
+  function insert_into_db()
+  {
+    $this->description = $_POST['description'];
+    $this->user_id = $_POST['user_id'];
+    $this->project_url = $_POST['project_url'];  
+    $this->picture_url = $_POST['picture_url'];     
+    $this->db->insert('likes', $this);
+  }
   function login($email,$password)
   {
     $this->db->where("email",$email);

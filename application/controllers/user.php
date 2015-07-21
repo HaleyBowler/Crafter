@@ -17,6 +17,13 @@ class User extends CI_Controller {
 			$this->load->view("register_view");
 		}
 	}
+    public function insert_into_db()
+    {
+    	$this->load->model('user_model');
+    	$this->user_model->insert_into_db();
+
+		$this->load->view('home.php');
+	}
 	public function login()
 	{
 		$rules = array(array('field'=>'l_email','label'=>'Email','rules'=>'required|valid_email'),
