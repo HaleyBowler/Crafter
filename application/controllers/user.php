@@ -1,20 +1,44 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class User extends CI_Controller {
+
+	//public $stack;
+	//public $i;
+
 	public function __construct()
 	{
 		parent::__construct();
+
 		$this->load->library('form_validation');
 		$this->load->model('user_model');
 	}
+	/*
+	public function get_pins()
+	{
+		$jsonurl = "http://api.pinterest.com/v3/pidgets/users/pagingfunmums/pins/";
+		$json = file_get_contents($jsonurl);
+		$jfo = json_decode($json);
+		$pins = $jfo->data->pins;
+		$this->stack = new SplStack();
+		foreach ($pins as $pin) {
+			$this->stack->push($pin);
+		}
+	}
+	*/
 	public function index()
 	{
 		if(($this->session->userdata('user_id')!=""))
 		{
 			$user_info = $this->session->all_userdata();
 			$user_id = $user_info['user_id'];
+
+			//$$this->i++;
+
 			$data = array(
-               	'user_id' => $user_id
-        	);
+				'user_id' => $user_id,
+				//'stack' => $this->stack
+				//'i' => $this->i
+			);
+
 			$this->load->view('home.php', $data);
 		}
 		else
@@ -22,16 +46,20 @@ class User extends CI_Controller {
 			$this->load->view("register_view");
 		}
 	}
-    public function insert_into_db()
-    {
-    	$user_info = $this->session->all_userdata();
+	public function insert_into_db()
+	{
+		$user_info = $this->session->all_userdata();
 		$user_id = $user_info['user_id'];
-		$data = array(
-            'user_id' => $user_id
-        );
 
-        $this->load->model('user_model');
-    	$this->user_model->insert_into_db();
+		//$this->i++;
+
+		$data = array(
+			'user_id' => $user_id,
+			//'stack' => $this->stack
+			//'i' => $this->i
+		);
+		$this->load->model('user_model');
+		$this->user_model->insert_into_db();
 
 		$this->load->view('home.php', $data);
 	}
@@ -46,14 +74,20 @@ class User extends CI_Controller {
 		}
 		else
 		{
+			//$this->get_pins();
+			//$this->i = 0;
 			$auth=$this->user_model->login($this->input->post('l_email'),$this->input->post('l_pass'));
 			if($auth)
 			{
 				$user_info = $this->session->all_userdata();
 				$user_id = $user_info['user_id'];
+
 				$data = array(
-               		'user_id' => $user_id
-        		);
+					'user_id' => $user_id,
+					//'stack' => $this->stack
+					'i' => $this->i 
+				);
+
 				$this->load->view('home.php', $data);
 			}
 			else
