@@ -5,7 +5,8 @@
 </head>
 <body>
 	<div>
-		<a href="<?=site_url('user/logout')?>" style="float: right;">logout</a>
+		<a href="<?=site_url('user/logout')?>" style="float: right;">Logout</a><br/>
+		<a href="<?=site_url('like')?>" style="float: right;">My Likes</a>
 	</div>
 	<div>
 		<?php echo "Welcome ".$this->session->userdata('username');?>
@@ -16,7 +17,11 @@
 		$json = file_get_contents($jsonurl);
 		$jfo = json_decode($json);
 		$pins = $jfo->data->pins;
-		$pin = $pins{1};
+		$stack = new SplStack();
+		foreach ($pins as $pin) {
+			$stack->push($pin);
+		}
+		$pin = $stack->pop();
 		$img = $pin->images;
 		$description = $pin->description;
 		$project = $pin->link;
@@ -30,20 +35,9 @@
 				<input type="hidden" id="picture_url" name="picture_url" value="<?php echo $imgURL?>" />
 				<input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id?>" />
 			</div>
-			<button type="submit">Like</button>
+			<button type="submit" class="button" name="select" value="select">Like</button>
 		</form>
 		<button>Dislike</button>
-		<?php
-		/*
-		foreach ($pins as $pin) {
-			$img = $pin->images;
-			$description = $pin->description;
-			$project = $pin->link;
-			$array = json_decode(json_encode($img), true);
-			$imgURL = $array["237x"]["url"];
-		}
-		*/
-		?>
 
 		<?php
 		//$img = 'assets/file.jpg';

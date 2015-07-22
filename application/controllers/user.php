@@ -24,14 +24,15 @@ class User extends CI_Controller {
 	}
     public function insert_into_db()
     {
-    	$this->load->model('user_model');
-    	$this->user_model->insert_into_db();
-
     	$user_info = $this->session->all_userdata();
 		$user_id = $user_info['user_id'];
 		$data = array(
             'user_id' => $user_id
         );
+
+        $this->load->model('user_model');
+    	$this->user_model->insert_into_db();
+
 		$this->load->view('home.php', $data);
 	}
 	public function login()
