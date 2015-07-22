@@ -11,15 +11,15 @@ body {
 
 /* Wrapper with padding */
 .wrap  {
-    height: 50vh;
-    padding: 8%;
+    height: 300px;
+    padding: 5%;
 }
 
 #tinderslide {
     position: relative;
     background: #fff;
     width: 95%;
-    height: 50vh;
+    height: 100%;
 }
 
 #tinderslide ul {
@@ -137,9 +137,6 @@ body {
     width: 304px;
     margin: 0 auto;
     overflow: hidden;
-      margin: 200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .actions div {
