@@ -36,6 +36,7 @@
 	<div class="wrap">
 		<div id="tinderslide">
 		    <ul>
+		    	<li> Out of pictures :(</li>
 		    	<?php
 		    		for ($x=0 ; $x <= sizeof($stack); $x++)
 		    		{
@@ -47,7 +48,12 @@
 						$array = json_decode(json_encode($img), true);
 						$imgURL = $array["237x"]["url"];
 				?>
-				<li class="pane2"><div class="img" style="background: url(<?php echo $imgURL?>); background-size: 100% 100%" no-repeat scroll center center></div><div><?php echo $description?></div><div class="like"></div><div class="dislike"></div></li>
+				<li class="pane2">
+					<div class="img" style="background: url(<?php echo $imgURL?>); background-size: 100% 100%" no-repeat scroll center center></div>
+					<div id="current_project" description="<?php echo $description?>" image="<?php echo $imgURL?>" link="<?php echo $project?>"><?php echo $description?></div>
+					<div class="like"></div>
+					<div class="dislike"></div>
+				</li>
 				<?php
 		    		}
 				?>

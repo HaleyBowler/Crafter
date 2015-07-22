@@ -4,13 +4,11 @@
 $("#tinderslide").jTinder({
 	// dislike callback
     onDislike: function (item) {
-	    // set the status text
-        $('#status').html('Dislike image ' + (item.index()+1));
     },
 	// like callback
     onLike: function (item) {
-	    // set the status text
-        $('#status').html('Like image ' + (item.index()+1));
+    	current_project = document.getElementById("current_project")
+    	alert(current_project.link)
     },
 	animationRevertSpeed: 200,
 	animationSpeed: 400,
