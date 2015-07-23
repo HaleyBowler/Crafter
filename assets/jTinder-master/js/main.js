@@ -8,7 +8,6 @@ $("#tinderslide").jTinder({
 	// like callback
     onLike: function (item) {
     	current_project = document.getElementById("current_project")
-    	alert(current_project.link)
     },
 	animationRevertSpeed: 200,
 	animationSpeed: 400,

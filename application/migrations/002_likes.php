@@ -19,11 +19,11 @@ class Migration_Likes extends CI_Migration {
                             ),
                             'picture_url' => array(
                                     'type' => 'VARCHAR',
-                                    'constraint' => '50'
+                                    'constraint' => '200'
                             ),
                             'project_url' => array(
                                     'type' => 'VARCHAR',
-                                    'constraint' => '50'
+                                    'constraint' => '200'
                             ),
                             'description' => array(
                                     'type' => 'VARCHAR',

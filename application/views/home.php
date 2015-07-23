@@ -2,18 +2,36 @@
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url("assets/jTinder-master/css/jTinder.css"); ?>" />
 </head>
 <body>
-	<div>
-		<a href="<?=site_url('user/logout')?>" style="float: right;">Logout</a><br/>
-		<a href="<?=site_url('like')?>" style="float: right;">My Likes</a>
-		</div>
-		<?php echo "Welcome ".$this->session->userdata('username');?>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Welcome <?php echo $this->session->userdata('username');?></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="<?=site_url('user/logout')?>">Logout<span class="sr-only">(current)</span></a></li>
+					<li class="home"><a href="<?=site_url('like')?>">My Likes<span class="sr-only">(current)</span></a></li>
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
 	<?php
-	echo $user_id;
 	$jsonurl = "http://api.pinterest.com/v3/pidgets/users/buzzfeed/pins/";
 	$json = file_get_contents($jsonurl);
 	$jfo = json_decode($json);
@@ -40,18 +58,18 @@
 						$array = json_decode(json_encode($img), true);
 						$imgURL = $array["237x"]["url"];
 						?>
-						<li class="pane2">
+						<li class="pane2" value="<?php echo $imgURL?>">
 							<div class="img" style="background: url(<?php echo $imgURL?>); background-size: 100% 100%" no-repeat scroll center center></div>
 							<div id="current_project" description="<?php echo $description?>" image="<?php echo $imgURL?>" link="<?php echo $project?>"><?php echo $description?></div>
 							<div class="like"></div>
 							<div class="dislike"></div>
 						</li>
-						<form id="myform" action="insert_into_db" method="post">
+						<!--<form id="myform" action="insert_into_db" method="post">
 							<input type="hidden" id="description" name="description" value="<?php echo $description?>" />
 							<input type="hidden" id="project_url" name="project_url" value="<?php echo $project?>" />
 							<input type="hidden" id="picture_url" name="picture_url" value="<?php echo $imgURL?>" />
 							<input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id?>" />
-						</form>
+						</form>-->
 						<?php
 					}
 					?>
@@ -60,17 +78,29 @@
 		</div>
 		<!-- jTinder trigger by buttons  -->
 
-		<div class="actions">
-			<a href="#" class="dislike"><i></i></a>
-			<a href="#" onclick="document.forms['myform'].submit();" class="like"><i></i></a>
-		</div>
+		<form id="myform" action="insert_into_db" method="post">
+		<input type="hidden" id="description" name="description" value="1" />
+			<input type="hidden" id="project_url" name="project_url" value="1" />
+			<input type="hidden" id="picture_url" name="picture_url" value="1" />
+			<input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id?>" />
+		</form>
+
 
 	</body>
 	<script type="text/javascript" src="<?php echo base_url("assets/jTinder-master/js/jquery.min.js");?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/jTinder-master/js/jquery.transform2d.js");?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/jTinder-master/js/jquery.jTinder.js");?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/jTinder-master/js/main.js");?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/js/jQuery-1.11.3.js"); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
 	<script>
+	/*
+		var current_project = document.getElementById("current_project");
+		var description = current_project.getAttribute("description");
+		var imgURL = current_project.getAttribute("image");
+		document.getElementById("description").value = description;
+		document.getElementById("picture_url").value = imgURL;
+	*/
 		$("#tinderslide").jTinder({
 			onDislike: function (item) {
 			},

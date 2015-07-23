@@ -3,14 +3,18 @@
 <head>
     <title>Welcome</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>" />
 </head>
 
 <body>
-    <div class="container">
+<div class="container-fluid jumbotron">
+    <h1 class="register">Welcome to Crafter</h1>
+</div>
+<div class="container sign-in">
         <div id="login_form">
-            <h1>Sign In</h1>
+            <h3>Sign In</h3>
             <form action="<?=site_url('user/login')?>" method="post">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -20,13 +24,13 @@
                     <label for="password">Password</label>
                     <input type="password" class = "form-control" name="l_pass"/>
                 </div>
-                <input type="submit" class="btn btn-default" value="Sign in" name="signin"/>
+                <input type="submit" class="btn btn-default btn-lg" value="Sign in" name="signin"/>
             </form>
         </div>
     </div>
     <div class="container">
         <div id="register_form">
-            <h1>Sign Up</h1>
+            <h3>Sign Up</h3>
             <form action="<?=site_url('user/do_register')?>" method="post">
                 <div class="form-group">
                     <label for="username">User Name</label>
@@ -40,7 +44,7 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" name="password"/>
                 </div>
-                <input type="submit" class="btn btn-default" value="Sign up" name="register"/>
+                <input type="submit" class="btn btn-default btn-lg" value="Sign up" name="register"/>
             </div>
         </form>
     </div>
