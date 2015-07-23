@@ -34,7 +34,7 @@ class User extends CI_Controller {
 			//$$this->i++;
 
 			$data = array(
-				'user_id' => $user_id,
+				'user_id' => $user_id
 				//'stack' => $this->stack
 				//'i' => $this->i
 			);
@@ -54,7 +54,7 @@ class User extends CI_Controller {
 		//$this->i++;
 
 		$data = array(
-			'user_id' => $user_id,
+			'user_id' => $user_id
 			//'stack' => $this->stack
 			//'i' => $this->i
 		);
@@ -83,9 +83,9 @@ class User extends CI_Controller {
 				$user_id = $user_info['user_id'];
 
 				$data = array(
-					'user_id' => $user_id,
+					'user_id' => $user_id
 					//'stack' => $this->stack
-					'i' => $this->i 
+					//'i' => $this->i 
 				);
 
 				$this->load->view('home.php', $data);
