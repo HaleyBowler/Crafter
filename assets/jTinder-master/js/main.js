@@ -1,13 +1,39 @@
 /**
  * jTinder initialization
  */
+
+var count = 0
+
 $("#tinderslide").jTinder({
 	// dislike callback
     onDislike: function (item) {
+    	count++;
     },
 	// like callback
     onLike: function (item) {
-    	current_project = document.getElementById("current_project")
+    	current_project = document.getElementById(count)
+    	image = (current_project.getAttribute("image"))
+    	description = (current_project.getAttribute("description"))
+    	link = (current_project.getAttribute("link"))
+    	alert("description:" +description+"...")
+
+    	data = [image, description, link]
+
+    	$.ajax({
+		  type: "Get",
+		  url: "index.php/user/insert_into_db",
+		  data: {image: image, link: link, description: description},
+		});
+
+    	count++;
+    	/*var my_data = {image: image, description: description, link: link};
+    	var xhr = new XMLHttpRequest();
+    	xhr.open("POST", "http://localhost:8880/Crafter/index.php/user/insert_into_db", true);
+    	xhr.onreadystatechange = function () {
+        if (xhr.readyState != 4 || xhr.status != 200)
+            return;
+        };
+        xhr.send(JSON.stringify(my_data));*/
     },
 	animationRevertSpeed: 200,
 	animationSpeed: 400,

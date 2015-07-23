@@ -51,6 +51,24 @@ class User extends CI_Controller {
 		$user_info = $this->session->all_userdata();
 		$user_id = $user_info['user_id'];
 
+        // $input can be accessed like an object
+        $image = $_GET['image'];
+        $link = $_GET['link'];
+        $description = $_GET['description'];
+
+
+        /*$sql = "INSERT INTO likes (user_id, picture_url, project_url, description) 
+        VALUES ($user_id, $image, $link, $description)";*/
+
+        $sql = "INSERT INTO likes (user_id, picture_url, project_url, description) 
+        VALUES ('$user_id', '$image', '$link', '$description')";
+
+		$this->db->query($sql);
+
+		/*
+		$user_info = $this->session->all_userdata();
+		$user_id = $user_info['user_id'];
+
 		//$this->i++;
 
 		$data = array(
@@ -61,7 +79,7 @@ class User extends CI_Controller {
 		$this->load->model('user_model');
 		$this->user_model->insert_into_db();
 
-		$this->load->view('home.php', $data);
+		$this->load->view('home.php', $data);*/
 	}
 	public function login()
 	{
