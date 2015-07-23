@@ -30,7 +30,7 @@
 			<ul>
 				<li> Out of pictures :(</li>
 					<?php
-					for ($x=0 ; $x <= sizeof($stack); $x++)
+					for ($x=sizeof($stack)-1 ; $x >= 0; $x--)
 					{
 						$pin = $stack->pop();
 						$img = $pin->images;
@@ -42,16 +42,10 @@
 						?>
 						<li class="pane2">
 							<div class="img" style="background: url(<?php echo $imgURL?>); background-size: 100% 100%" no-repeat scroll center center></div>
-							<div id="current_project" description="<?php echo $description?>" image="<?php echo $imgURL?>" link="<?php echo $project?>"><?php echo $description?></div>
+							<div id="<?php echo $x?>" description="<?php echo $description?>" image="<?php echo $imgURL?>" link="<?php echo $project?>"><?php echo $description?></div>
 							<div class="like"></div>
 							<div class="dislike"></div>
 						</li>
-						<form id="myform" action="insert_into_db" method="post">
-							<input type="hidden" id="description" name="description" value="<?php echo $description?>" />
-							<input type="hidden" id="project_url" name="project_url" value="<?php echo $project?>" />
-							<input type="hidden" id="picture_url" name="picture_url" value="<?php echo $imgURL?>" />
-							<input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id?>" />
-						</form>
 						<?php
 					}
 					?>
@@ -62,7 +56,7 @@
 
 		<div class="actions">
 			<a href="#" class="dislike"><i></i></a>
-			<a href="#" onclick="document.forms['myform'].submit();" class="like"><i></i></a>
+			<a href="#" class="like"><i></i></a>
 		</div>
 
 	</body>
