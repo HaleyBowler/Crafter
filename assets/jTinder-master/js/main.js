@@ -15,13 +15,11 @@ $("#tinderslide").jTinder({
     	image = (current_project.getAttribute("image"))
     	description = (current_project.getAttribute("description"))
     	link = (current_project.getAttribute("link"))
-    	alert("description:" +description+"...")
-
     	data = [image, description, link]
 
     	$.ajax({
 		  type: "Get",
-		  url: "index.php/user/insert_into_db",
+		  url: "user/insert_into_db",
 		  data: {image: image, link: link, description: description},
 		});
 
