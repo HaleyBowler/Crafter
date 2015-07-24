@@ -71,10 +71,6 @@
 			</div>
 		</div>
 		<!-- jTinder trigger by buttons  -->
-		<div class="actions">
-			<a href="#" class="dislike"><i></i></a>
-			<a href="#" class="like"><i></i></a>
-		</div>
 
 	</body>
 	<script type="text/javascript" src="<?php echo base_url("assets/jTinder-master/js/jquery.min.js");?>"></script>
@@ -84,18 +80,6 @@
 	<script type="text/javascript" src="<?php echo base_url("assets/js/jQuery-1.11.3.js"); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
 	<script>
-	/*
-		var current_project = document.getElementById("current_project");
-		var description = current_project.getAttribute("description");
-		var imgURL = current_project.getAttribute("image");
-		document.getElementById("description").value = description;
-		document.getElementById("picture_url").value = imgURL;
-	*/
-		$("#tinderslide").jTinder({
-			onDislike: function (item) {
-			},
-			onLike: function (item) {
-			},
-		});
+
 	</script>
 	</html>

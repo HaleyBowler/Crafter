@@ -5,7 +5,6 @@
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="<?php echo base_url("assets/css/style.css"); ?>" />
-	<link rel="stylesheet" href="<?php echo base_url("assets/jTinder-master/css/jTinder.css"); ?>" />
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -31,19 +30,22 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
-	<?php foreach ($likes as $like)
-	{   
-		?>
-
-		<p><img src="<?php echo $like['picture_url']?>"></p>
-		<p><?php echo $like['user_id']?></p>
-
-		<?php 
-	} 
-	?>
-	<?php echo $pagination; ?>
+		<div class="row">
+			<?php foreach ($likes as $like)
+			{   
+				?>
+				<div class="col-sm-4 pad-bottom">
+					<p class="center"><img src="<?php echo $like['picture_url']?>" class="liked-pic" width:"200" height="250"></p>
+				</div>
+				<?php 
+			} 
+			?>
+		</div>
 	</div>
-	<script type="text/javascript" src="<?php echo base_url("assets/js/jQuery-1.11.3.js"); ?>"></script>
+	<!--<p class="center"><?php echo $pagination; ?></p>-->
+</div>
+
+<script type="text/javascript" src="<?php echo base_url("assets/js/jQuery-1.11.3.js"); ?>"></script>
 	<script type="text/javascript" src="<?php echo base_url("assets/js/bootstrap.js"); ?>"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@ $("#tinderslide").jTinder({
 
     	$.ajax({
 		  type: "Get",
-		  url: "index.php/user/insert_into_db",
+		  url: "insert_into_db",
 		  data: {image: image, link: link, description: description},
 		});
 
