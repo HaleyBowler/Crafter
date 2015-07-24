@@ -24,10 +24,6 @@ class Migration_Likes extends CI_Migration {
                             'project_url' => array(
                                     'type' => 'VARCHAR',
                                     'constraint' => '200'
-                            ),
-                            'description' => array(
-                                    'type' => 'VARCHAR',
-                                    'constraint' => '255'
                             )
 
                     ));

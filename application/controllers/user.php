@@ -54,14 +54,13 @@ class User extends CI_Controller {
         // $input can be accessed like an object
         $image = $_GET['image'];
         $link = $_GET['link'];
-        $description = $_GET['description'];
 
 
         /*$sql = "INSERT INTO likes (user_id, picture_url, project_url, description) 
         VALUES ($user_id, $image, $link, $description)";*/
 
-        $sql = "INSERT INTO likes (user_id, picture_url, project_url, description) 
-        VALUES ('$user_id', '$image', '$link', '$description')";
+        $sql = "INSERT INTO likes (user_id, picture_url, project_url) 
+        VALUES ('$user_id', '$image', '$link')";
 
 		$this->db->query($sql);
 

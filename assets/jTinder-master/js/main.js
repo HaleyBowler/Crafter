@@ -13,14 +13,13 @@ $("#tinderslide").jTinder({
     onLike: function (item) {
     	current_project = document.getElementById(count)
     	image = (current_project.getAttribute("image"))
-    	description = (current_project.getAttribute("description"))
     	link = (current_project.getAttribute("link"))
-    	data = [image, description, link]
+    	data = [image, link]
 
     	$.ajax({
 		  type: "Get",
 		  url: "insert_into_db",
-		  data: {image: image, link: link, description: description},
+		  data: {image: image, link: link},
 		});
 
     	count++;
