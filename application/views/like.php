@@ -35,7 +35,11 @@
 			{   
 				?>
 				<div class="col-sm-4 pad-bottom">
-					<p class="center"><img src="<?php echo $like['picture_url']?>" class="liked-pic" width:"200" height="250"></p>
+					<a href= "<?php echo $like['project_url']?>">
+						<p class="center">
+							<img src="<?php echo $like['picture_url']?>" class="liked-pic" width:"200" height="250">
+						</p>
+					</a>
 				</div>
 				<?php 
 			} 

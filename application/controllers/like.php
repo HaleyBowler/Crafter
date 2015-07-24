@@ -13,8 +13,7 @@ class Like extends CI_Controller{
 		$likes = $query->result_array();
 
         //call the model function to get the department data
-		$data['likes'] = $likes;           
-
+		$data['likes'] = $likes;
 
         //load the department_view
 		$this->load->view('like', $data);
